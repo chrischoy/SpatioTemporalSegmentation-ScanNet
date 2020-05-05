@@ -15,7 +15,7 @@ from sklearn.preprocessing import label_binarize
 from lib.utils import Timer, AverageMeter, precision_at_one, fast_hist, per_class_iu, \
     get_prediction, get_torch_device
 
-from MinkowskiEngine import SparseTensor
+import MinkowskiEngine as ME
 
 
 def print_info(iteration,
@@ -92,7 +92,7 @@ def test(model, data_loader, config, transform_data_fn=None, has_gt=True):
 
       if config.normalize_color:
         input[:, :3] = input[:, :3] / 255. - 0.5
-      sinput = SparseTensor(input, coords).to(device)
+      sinput = ME.SparseTensor(input, coords).to(device)
 
       # Feed forward
       inputs = (sinput,)
