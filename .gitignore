@@ -1,0 +1,24 @@
+# Byte-compiled / optimized
+__pycache__/
+*.py[cod]
+*.o
+*.so
+
+# Text edits
+*.swp
+*.orig
+
+# PCL compiled binaries
+downsample/build
+downsample/downsample
+example/
+
+# Training
+outputs/
+
+# Profiling
+callgrind.out*
+*.dSYM
+
+# Misc
+.DS_Store
