@@ -155,10 +155,6 @@ def train(model, data_loader, val_data_loader, config, transform_data_fn=None):
         # Recover back
         model.train()
 
-      if curr_iter % config.empty_cache_freq == 0:
-        # Clear cache
-        torch.cuda.empty_cache()
-
       # End of iteration
       curr_iter += 1
 
