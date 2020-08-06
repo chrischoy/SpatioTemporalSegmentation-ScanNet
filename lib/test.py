@@ -75,9 +75,6 @@ def test(model, data_loader, config, transform_data_fn=None, has_gt=True):
   # Fix batch normalization running mean and std
   model.eval()
 
-  # Clear cache (when run in val mode, cleanup training cache)
-  torch.cuda.empty_cache()
-
   with torch.no_grad():
     for iteration in range(max_iter):
       data_timer.tic()
@@ -137,10 +134,6 @@ def test(model, data_loader, config, transform_data_fn=None, has_gt=True):
             hist,
             reordered_ap_class,
             class_names=class_names)
-
-      if iteration % config.empty_cache_freq == 0:
-        # Clear cache
-        torch.cuda.empty_cache()
 
   global_time = global_timer.toc(False)
 
