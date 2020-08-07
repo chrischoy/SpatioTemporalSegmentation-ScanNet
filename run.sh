@@ -32,7 +32,7 @@ echo -e "
     --log_dir $OUTPATH \
     --dataset $DATASET \
     --model $MODEL \
-    --train_limit_numpoints 1500000 \
+    --train_limit_numpoints 1000000 \
     --lr $LR \
     --optimizer $OPTIMIZER \
     --batch_size $BATCH_SIZE \
@@ -52,7 +52,7 @@ time python -W ignore main.py \
     --log_dir $OUTPATH \
     --dataset $DATASET \
     --model $MODEL \
-    --train_limit_numpoints 1500000 \
+    --train_limit_numpoints 1200000 \
     --lr $LR \
     --optimizer $OPTIMIZER \
     --batch_size $BATCH_SIZE \

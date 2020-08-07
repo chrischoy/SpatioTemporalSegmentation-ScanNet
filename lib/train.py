@@ -16,7 +16,7 @@ from lib.utils import checkpoint, precision_at_one, \
     Timer, AverageMeter, get_prediction, get_torch_device
 from lib.solvers import initialize_optimizer, initialize_scheduler
 
-from MinkowskiEngine import SparseTensor
+from MinkowskiEngine import SparseTensor, MinkowskiAlgorithm
 
 
 def validate(model, val_data_loader, writer, curr_iter, config, transform_data_fn):
@@ -88,7 +88,8 @@ def train(model, data_loader, val_data_loader, config, transform_data_fn=None):
         # Preprocess input
         if config.normalize_color:
           input[:, :3] = input[:, :3] / 255. - 0.5
-        sinput = SparseTensor(input, coords, device=device)
+        sinput = SparseTensor(
+            input, coords, device=device, minkowski_algorithm=MinkowskiAlgorithm.MEMORY_EFFICIENT)
 
         data_time += data_timer.toc(False)
 
